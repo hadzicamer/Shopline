@@ -1,0 +1,14 @@
+{
+  "name": "shopline",
+  "version": "1.0.0",
+  "description": "eCommerce application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server"
+  },
+  "author": "Amer Hadzic",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
