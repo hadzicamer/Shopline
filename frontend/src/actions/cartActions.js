@@ -1,5 +1,6 @@
 import axios from 'axios'
-import{CART_ADD_ITEM} from '../constants/cartConst'
+import { get } from 'mongoose'
+import{CART_ADD_ITEM,CART_REMOVE_ITEM} from '../constants/cartConst'
 
 export const addToCart=(id,qty)=>async(dispatch,getState)=>{
 
@@ -12,9 +13,17 @@ export const addToCart=(id,qty)=>async(dispatch,getState)=>{
             name:data.name,
             image:data.image,
             price:data.price,
-            countInStock=data.countInStock,
+            countInStock:data.countInStock,
             qty
         }
     })
     localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems))
+}
+
+export const removeFromCart=(id)=>(dispatch,getState)=>{
+    dispatch({
+        type:CART_REMOVE_ITEM,
+        payload:id
+    })
+    localStorage.setItem('cartItems',JSON.stringify(getState().cart.cartItems))
 }
