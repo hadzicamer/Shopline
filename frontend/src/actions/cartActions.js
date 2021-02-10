@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { get } from 'mongoose'
 import{CART_ADD_ITEM,CART_REMOVE_ITEM} from '../constants/cartConst'
 
 export const addToCart=(id,qty)=>async(dispatch,getState)=>{
