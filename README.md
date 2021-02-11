@@ -1,3 +1,3 @@
 # Shopline
 
-#### eCommerce webApplication using MERN stack (MongoDB, ExpressJS, ReactJS, NodeJS)
+#### eCommerce web application using MERN stack (MongoDB, ExpressJS, ReactJS, NodeJS)
