@@ -1,8 +1,9 @@
 import React from 'react'
 import{useDispatch,useSelector} from 'react-redux'
-import{Navbar,Nav, Container, NavDropdown} from 'react-bootstrap'
+import{Navbar,Nav, Container, NavDropdown,NavLink} from 'react-bootstrap'
 import {LinkContainer} from 'react-router-bootstrap'
 import {logout} from '../actions/userActions'
+
 
 
 const Header = () => {
@@ -23,7 +24,7 @@ const Header = () => {
     <Container>
     <Nav className="ml-auto">
     <LinkContainer to="/cart">
-      <Nav.Link style={{color:'white'}} ><i style={{margin:'10px'}} className='fas fa-shopping-cart'></i>Cart</Nav.Link>
+      <NavLink><i className='fas fa-shopping-cart'></i>   Cart</NavLink>
     </LinkContainer>
     {userInfo?(
 <NavDropdown title={userInfo.name} id='username'>
@@ -33,7 +34,7 @@ const Header = () => {
 <NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
 </NavDropdown>
     ):  <LinkContainer to="/login">
-    <Nav.Link style={{color:'white'}} ><i style={{margin:'10px'}} className='fas fa-user'></i>Sign in</Nav.Link>
+    <NavLink><i className='fas fa-user'></i>     Sign in</NavLink>
   </LinkContainer>}
   
     </Nav> 
