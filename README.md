@@ -1,6 +1,6 @@
 # Shopline
 
-## eCommerce web application using :
+## eCommerce web application using  :
 #### MongoDB
 #### ExpressJS 
 #### ReactJS 
