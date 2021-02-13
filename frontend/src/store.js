@@ -19,10 +19,13 @@ const cartItemsStorage=localStorage.getItem('cartItems')?JSON.parse(localStorage
 
 const userInfoStorage=localStorage.getItem('userInfo')?JSON.parse(localStorage.getItem('userInfo')):null
 
+const shippingAddressStorage=localStorage.getItem('shippingAddress')?JSON.parse(localStorage.getItem('shippingAddress')):{}
 
 const initialState={
-    cart:{cartItems:cartItemsStorage},
+    cart:{cartItems:cartItemsStorage,
+    shippingAddress:shippingAddressStorage},
     userLogin:{userInfo:userInfoStorage},
+
 }
 const middleware=[thunk]
 const store=createStore(reducer,initialState,composeWithDevTools(applyMiddleware(...middleware)))
