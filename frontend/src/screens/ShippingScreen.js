@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Button, Col, FormGroup, FormLabel, FormControl } from 'react-bootstrap';
+import { Form, Button, FormGroup, FormLabel, FormControl } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux'; 
 import { saveShippingAddress } from '../actions/cartActions';
 import FormContainer from '../components/FormContainer';
