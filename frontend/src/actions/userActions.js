@@ -1,7 +1,6 @@
-import { USER_DETAILS_FAIL, USER_DETAILS_REQUEST, USER_DETAILS_SUCCESS, USER_LOGIN_FAIL, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGOUT, USER_REGISTER_FAIL, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_UPDATE_FAIL, USER_UPDATE_REQUEST, USER_UPDATE_SUCCESS,USER_DETAILS_RESET } from '../constants/userConst';
+import { USER_DETAILS_FAIL, USER_DETAILS_REQUEST, USER_DETAILS_SUCCESS, USER_LOGIN_FAIL, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGOUT, USER_REGISTER_FAIL, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_UPDATE_FAIL, USER_UPDATE_REQUEST, USER_UPDATE_SUCCESS,USER_DETAILS_RESET, USER_LIST_REQUEST, USER_LIST_SUCCESS, USER_LIST_FAIL } from '../constants/userConst';
 import {ORDER_LIST_MY_RESET} from '../constants/orderConst'
 import axios from 'axios';
-import { get } from 'mongoose';
 export const login = (email, password) => async (dispatch) => {
   try {
     dispatch({
@@ -153,6 +152,41 @@ export const updateUser = (user) => async (dispatch,getState) => {
   } catch (error) {
     dispatch({
         type: USER_UPDATE_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      })
+  }
+};
+
+
+export const listUsers = () => async (dispatch,getState) => {
+
+  try {
+    dispatch({
+      type: USER_LIST_REQUEST,
+    });
+
+    const {userLogin:{userInfo}}=getState()
+
+    const config = {
+      headers: {
+      Authorization:`Bearer ${userInfo.token}`
+      },
+    }
+
+    const { data } = await axios.get(
+      `/api/users`,config
+    );
+    dispatch({
+      type: USER_LIST_SUCCESS,
+      payload: data,
+    });
+
+  } catch (error) {
+    dispatch({
+        type: USER_LIST_FAIL,
         payload:
           error.response && error.response.data.message
             ? error.response.data.message
