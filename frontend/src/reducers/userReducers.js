@@ -1,9 +1,4 @@
 import {
-  USER_DELETE_FAIL,
-  USER_DELETE_REQUEST,
-  USER_DELETE_SUCCESS,
-} from '../constants/orderConst';
-import {
   USER_DETAILS_FAIL,
   USER_DETAILS_REQUEST,
   USER_DETAILS_RESET,
@@ -25,7 +20,10 @@ import {
   USER_UPDATE_US_REQUEST,
   USER_UPDATE_US_SUCCESS,
   USER_UPDATE_US_FAIL,
-  USER_UPDATE_US_RESET
+  USER_UPDATE_US_RESET,
+  USER_DELETE_FAIL,
+  USER_DELETE_REQUEST,
+  USER_DELETE_SUCCESS
 } from '../constants/userConst';
 
 export const userLoginReducer = (state = {}, action) => {
