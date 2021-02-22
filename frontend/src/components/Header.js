@@ -1,10 +1,11 @@
 import React from 'react';
+import {Route} from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { Navbar, Nav, Container, NavDropdown, NavLink, Image } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import Search from './Search'
 import { logout } from '../actions/userActions';
 import logoImage from '../shoplineLogo.png'
-import { Link } from 'react-router-dom';
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -18,10 +19,11 @@ const Header = () => {
   return (
     <header>
       <Navbar className='navClass' variant='dark' collapseOnSelect>
-        <LinkContainer to='/' Shopline> 
+        <LinkContainer to='/'> 
         <Image id='logo' src={logoImage} />
         </LinkContainer>
         <Container>
+          <Route render={({history})=><Search history={history}></Search>}></Route>
           <Nav className='ml-auto'>
             <LinkContainer to='/cart'>
               <NavLink>
