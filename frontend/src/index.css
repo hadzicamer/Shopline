@@ -23,3 +23,7 @@ h2{
 .rating span{
     margin: 0.1em;
 }
+
+#logo{
+    max-width: 7%;
+}

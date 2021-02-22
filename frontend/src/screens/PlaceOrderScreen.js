@@ -84,7 +84,7 @@ const PlaceOrderScreen = ({history}) => {
                         <Col md={1}>
                           <Image
                             src={item.image}
-                            alt={item.naem}
+                            alt={item.name}
                             fluid
                             rounded
                           ></Image>

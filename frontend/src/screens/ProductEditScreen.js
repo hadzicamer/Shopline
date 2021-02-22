@@ -112,7 +112,7 @@ const ProductEditScreen = ({match,history}) => {
         </FormGroup>
 
         <FormGroup controlId='image'>
-        <FormLabel>Price</FormLabel>
+        <FormLabel>Image</FormLabel>
           <FormControl
             type='text'
             placeholder='Enter image url'

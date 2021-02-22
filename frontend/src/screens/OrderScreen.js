@@ -19,7 +19,7 @@ import {
   payOrder,
   deliverOrder,
 } from '../actions/orderActions';
-import { ORDER_PAY_RESET, ORDER_DELIVER_RESET } from '../constants/orderConst';
+import { ORDER_PAY_RESET, ORDER_DELIVER_RESET,ORDER_DETAILS_RESET } from '../constants/orderConst';
 
 const OrderScreen = ({ match,history }) => {
   const orderId = match.params.id;
@@ -70,7 +70,7 @@ const OrderScreen = ({ match,history }) => {
       if (!window.paypal) {
         addPayPal();
       } else {
-        setSdk = true;
+        setSdk(true);
       }
     }
   }, [dispatch, orderId, successPay, successDeliver, order]);
