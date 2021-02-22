@@ -19,9 +19,9 @@ const Header = () => {
   return (
     <header>
       <Navbar className='navClass' variant='dark' collapseOnSelect>
-        <LinkContainer to='/'> 
-        <Image id='logo' src={logoImage} />
-        </LinkContainer>
+      <LinkContainer to='/'>
+      <Image className='slika' src={logoImage}/>
+      </LinkContainer>
         <Container>
           <Route render={({history})=><Search history={history}></Search>}></Route>
           <Nav className='ml-auto'>

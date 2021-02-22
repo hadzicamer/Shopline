@@ -6,6 +6,9 @@ import Paginate from '../components/Paginate';
 import { listProducts } from '../actions/productActions';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
+import Meta from '../components/Meta';
+import ProductCarousel from '../components/ProductCarousel';
+import { Link } from 'react-router-dom';
 
 
 const HomeScreen = ({match}) => {
@@ -22,9 +25,9 @@ const HomeScreen = ({match}) => {
   }, [dispatch,keyword,pageNumber]);
 
   return (
-    
-    <>
-    
+      <>
+     <Meta/>
+    {!keyword ?( <ProductCarousel/>):(<Link to='/' className='btn btn-light'>Go back</Link>)}
       <h1>Latest products</h1>
       {loading ? <Loader>loading...</Loader>:error?<Message variant='danger'>{error}</Message>:
       <>

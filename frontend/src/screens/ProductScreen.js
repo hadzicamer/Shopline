@@ -7,6 +7,7 @@ import Loader from '../components/Loader'
 import Message from '../components/Message'
 import { listProductDetails,productReviewCreate } from '../actions/productActions'
 import{PRODUCT_CREATE_REVIEW_RESET} from '../constants/productConst'
+import Meta from '../components/Meta'
 
 const ProductScreen = ({match,history}) => {
 const [qty,setQty]=useState(1)
@@ -48,6 +49,7 @@ useEffect(()=>{
     <Link className='btn btn-dark my-3' to='/'>Go back</Link>
     {loading  ?(<Loader></Loader>):error?( <Message variant='danger'>{error}</Message>):(
         <>
+        <Meta title={product.name}/>
  <Row>
  <Col md={6}>
 <Image src={product.image} alt={product.name} fluid></Image>
