@@ -20,10 +20,10 @@ const Header = () => {
     <header>
       <Navbar className='navClass' variant='dark' collapseOnSelect>
       <LinkContainer to='/'>
-      <Image className='slika' src={logoImage}/>
+          <Route render={({history})=><Search history={history}></Search>}></Route>
       </LinkContainer>
         <Container>
-          <Route render={({history})=><Search history={history}></Search>}></Route>
+      <Image className='slika' src={logoImage}/>
           <Nav className='ml-auto'>
             <LinkContainer to='/cart'>
               <NavLink>
