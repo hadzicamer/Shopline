@@ -160,7 +160,7 @@ useEffect(()=>{
                         </FormGroup>
                         <Button type='submit' variant='primary'>Submit</Button>
                     </Form>
-                ):<Message>Please <Link to='/login'>sing in</Link>to write a review</Message>}
+                ):<Message>Please <Link to='/login'>sign in </Link>to write a review</Message>}
             </ListGroupItem>
         </ListGroup>
     </Col>

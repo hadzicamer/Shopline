@@ -78,6 +78,7 @@ const ProductListScreen = ({history,match }) => {
               <th>PRICE</th>
               <th>CATEGORY</th>
               <th>BRAND</th>
+              <th>ACTIONS</th>              
             </tr>
           </thead>
           <tbody>

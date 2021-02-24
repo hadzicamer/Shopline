@@ -13,6 +13,8 @@ import Message from '../components/Message';
 import CheckoutSteps from '../components/CheckoutSteps';
 import { Link } from 'react-router-dom';
 import { createOrder } from '../actions/orderActions';
+import{CART_RESET_CART} from '../constants/cartConst'
+import { ORDER_DETAILS_RESET,ORDER_DELIVER_RESET,ORDER_PAY_RESET } from '../constants/orderConst';
 
 const PlaceOrderScreen = ({history}) => {
   const dispatch = useDispatch();
@@ -20,10 +22,8 @@ const PlaceOrderScreen = ({history}) => {
     return (Math.round(num * 100) / 100).toFixed(2);
   };
   const cart = useSelector((state) => state.cart);
-  cart.itemsPrice = addDecimals(
-    cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0)
-  );
-  cart.shippingPrice = addDecimals(cart.itemsPrice > 50 ? 0 : 50);
+  cart.itemsPrice = addDecimals(cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0));
+  cart.shippingPrice = addDecimals(cart.itemsPrice > 150 ? 0 : 50);
   cart.taxPrice = addDecimals(Number((0.17 * cart.itemsPrice).toFixed(2)));
   cart.totalPrice = (
     Number(cart.itemsPrice) +
@@ -35,12 +35,12 @@ const PlaceOrderScreen = ({history}) => {
   const {order,success,error}=orderCreate
   useEffect(()=>{
       if(success){
-          history.push(`order/${order._id}`)
+        history.push(`/order/${order._id}`)
       }
-  },[history,success])
-
-  const placeOrderHandler = () => {
-    dispatch(createOrder({
+    },[history,success])
+    
+    const placeOrderHandler = () => {
+      dispatch(createOrder({
         orderItems:cart.cartItems,
         shippingAddress:cart.shippingAddress,
         payment:cart.payment,
@@ -48,7 +48,8 @@ const PlaceOrderScreen = ({history}) => {
         shippingPrice:cart.shippingPrice,
         taxPrice:cart.taxPrice,
         totalPrice:cart.totalPrice
-    }))
+      }))
+      dispatch({type:CART_RESET_CART})
   };
 
   return (

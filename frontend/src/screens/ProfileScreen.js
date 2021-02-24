@@ -16,7 +16,8 @@ import Loader from '../components/Loader';
 import { getDetails, updateUser } from '../actions/userActions';
 import { listMyOrders } from '../actions/orderActions';
 
-const ProfileScreen = ({ location, history }) => {
+
+const ProfileScreen = ({ history }) => {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
@@ -37,6 +38,7 @@ const ProfileScreen = ({ location, history }) => {
   const { loading: loadingOrders, error: errorOrders, orders } = orderListMy;
 
   useEffect(() => {
+
     if (!userInfo) {
       history.push('/login');
     } else {

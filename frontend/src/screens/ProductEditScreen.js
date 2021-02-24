@@ -114,7 +114,6 @@ const ProductEditScreen = ({match,history}) => {
         <FormGroup controlId='image'>
         <FormLabel>Image</FormLabel>
           <FormControl
-            type='text'
             placeholder='Enter image url'
             value={image}
             onChange={(e) => setImage(e.target.value)}

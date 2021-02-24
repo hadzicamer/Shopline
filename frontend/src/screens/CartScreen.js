@@ -14,6 +14,7 @@ import {
   Row,
 } from 'react-bootstrap';
 import { addToCart,removeFromCart } from '../actions/cartActions';
+import{CART_RESET_SHIPPING_ADDRESS} from '../constants/cartConst'
 
 const CartScreen = ({ match, location, history }) => {
   const productId = match.params.id;
@@ -26,24 +27,25 @@ const CartScreen = ({ match, location, history }) => {
 
   useEffect(() => {
     if (productId) {
-      dispatch(addToCart(productId, qty));
+        dispatch(addToCart(productId, qty));
     }
-  }, [dispatch, productId, qty]);
+}, [dispatch, productId, qty]);
 
-  const removeCartHandler=(id)=>{
-      dispatch(removeFromCart(id))
-  }
+const removeCartHandler=(id)=>{
+    dispatch(removeFromCart(id))
+}
 
-  const checkoutHandler=()=>{
+const checkoutHandler=()=>{
+      dispatch({type:CART_RESET_SHIPPING_ADDRESS})
       history.push('/login?redirect=shipping')
   }
   return (
     <Row>
       <Col md={8}>
-<h1>Shopping cart</h1>
-{cartItems.length===0?<Message>Cart is empty <Link to='/'>Go back</Link></Message>:(
+    <h1>Shopping cart</h1>
+    {cartItems.length===0?<Message>Cart is empty <Link to='/'>Go back</Link></Message>:(
     <ListGroup variant='flush'>
-{cartItems.map(item=>(
+    {cartItems.map(item=>(
     <ListGroupItem key={item.product}>
         <Row>
             <Col md={2}>

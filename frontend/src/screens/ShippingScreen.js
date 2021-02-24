@@ -49,7 +49,7 @@ const ShippingScreen = ({history}) => {
         <FormGroup controlId='postalCode'>
           <FormLabel>Postal code</FormLabel>
           <FormControl
-            type='text'
+            type='number'
             placeholder='Enter postal code'
             value={postalCode}
             required

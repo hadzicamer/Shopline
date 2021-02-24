@@ -6,24 +6,26 @@ import { LinkContainer } from 'react-router-bootstrap';
 import Search from './Search'
 import { logout } from '../actions/userActions';
 import logoImage from '../shoplineLogo.png'
+import {useHistory} from "react-router-dom";
 
 const Header = () => {
   const dispatch = useDispatch();
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
-
+  let history=useHistory();
   const logoutHandler = () => {
     dispatch(logout());
+    history.push('/login')
   };
   return (
     <header>
       <Navbar className='navClass' variant='dark' collapseOnSelect>
-      <LinkContainer to='/'>
           <Route render={({history})=><Search history={history}></Search>}></Route>
-      </LinkContainer>
         <Container>
+      <LinkContainer to='/'>
       <Image className='slika' src={logoImage}/>
+      </LinkContainer>
           <Nav className='ml-auto'>
             <LinkContainer to='/cart'>
               <NavLink>

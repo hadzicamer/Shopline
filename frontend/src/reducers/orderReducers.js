@@ -47,7 +47,7 @@ export const orderDetailsReducer = (state = {loading:true,orderItems:[],shipping
           error: action.payload,
         };
         case ORDER_DETAILS_RESET:
-          return{orderItems:[],shippingAddress:{}}
+          return{loading:true,orderItems:[],shippingAddress:{}}
       default:
         return state;
     }

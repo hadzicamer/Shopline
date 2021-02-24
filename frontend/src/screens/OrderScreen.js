@@ -19,7 +19,6 @@ import {
   payOrder,
   deliverOrder,
 } from '../actions/orderActions';
-import { ORDER_PAY_RESET, ORDER_DELIVER_RESET,ORDER_DETAILS_RESET } from '../constants/orderConst';
 
 const OrderScreen = ({ match,history }) => {
   const orderId = match.params.id;
@@ -48,6 +47,7 @@ const OrderScreen = ({ match,history }) => {
   }
 
   useEffect(() => {
+    
     if(!userInfo){
       history.push('/login')
     }
@@ -63,8 +63,6 @@ const OrderScreen = ({ match,history }) => {
       document.body.appendChild(script);
     };
     if (!order || successPay || successDeliver) {
-      dispatch({ type: ORDER_PAY_RESET });
-      dispatch({ type: ORDER_DELIVER_RESET });
       dispatch(getOrderDetails(orderId));
     } else if (!order.isPaid) {
       if (!window.paypal) {
@@ -76,7 +74,6 @@ const OrderScreen = ({ match,history }) => {
   }, [dispatch, orderId, successPay, successDeliver, order]);
 
   const successPaymentHandler = (paymentResult) => {
-    console.log(paymentResult);
     dispatch(payOrder(orderId, paymentResult));
   };
 
@@ -90,6 +87,7 @@ const OrderScreen = ({ match,history }) => {
     <Message variant='danger'>{error}</Message>
   ) : (
     <>
+       <Link className='btn btn-dark my-3' to='/profile'>Go back</Link>
       <h1>Order {order._id}</h1>
       <Row>
         <Col md={8}>
