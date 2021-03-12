@@ -9,5 +9,4 @@ https://shoplineapp.herokuapp.com/
 #### MongoDB
 #### ExpressJS 
 #### ReactJS 
-#### NodeJS
 
