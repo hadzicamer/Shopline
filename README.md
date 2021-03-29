@@ -7,6 +7,5 @@ https://shoplineapp.herokuapp.com/
 
 ## eCommerce web application using  :
 #### MongoDB
-#### ExpressJS 
+#### NodeJS + ExpressJS 
 #### ReactJS 
-
